@@ -1,0 +1,13 @@
+---
+- name: "setup {{ item }}"
+  template:
+    src: "templates/{{ item }}.j2"
+    dest: "/etc/yourdest"
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart myservice
+  loop:
+    - 40-ssh.conf
+    - 99-loghost.conf
+

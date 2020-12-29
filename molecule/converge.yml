@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  roles:
+    - name: "Include r_log"
+      role: r_log
+      become: yes

@@ -1,0 +1,19 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: vagrant
+lint: | 
+    ansible-lint
+platforms:
+  - name: centos7
+    box: generic/centos7
+  - name: centos8
+    box: generic/centos8
+provisioner:
+  name: ansible
+  playbooks:
+      converge: ../converge.yml
+verifier:
+  name: testinfra
+  directory: ../tests/

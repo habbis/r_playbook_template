@@ -1,0 +1,36 @@
+---
+- name: Ensure rsyslog is installed
+  package:
+    name: rsyslog
+    state: present
+
+# block https://docs.ansible.com/ansible/latest/user_guide/playbooks_blocks.html
+- block:
+  - name: RHEL 7 config
+    template:
+      src: templates/rhel7_myconf.j2
+      dest: /etc/rsyslog.conf
+      owner: root
+      group: root
+      mode: 0644
+    notify: restart rsyslog
+
+  - name: RHEL7 myconf
+    template:
+      src: templates/myconf.j2
+      dest: /etc/rsyslog.d/listen.conf
+      owner: root
+      group: root
+      mode: 0644
+    notify: restart rsyslog
+  when: ansible_distribution_major_version == '7'
+
+- name: RHEL 8 config
+  template:
+    src: templates/rhel8_myconf.j2
+    dest: /etc/rsyslog.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart rsyslog
+  when: ansible_distribution_major_version == '8'

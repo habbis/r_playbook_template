@@ -1,0 +1,15 @@
+---
+galaxy_info:
+  author: 
+  maintainer: 
+  description: Example ansible role 
+  documentation: https://ansiblerepo.basefarm.com/global/linux/r_log
+  min_ansible_version: 2.0
+  license: 
+  platforms:
+  - name: RHEL
+    versions:
+    - 7
+    - 8
+
+dependencies: []

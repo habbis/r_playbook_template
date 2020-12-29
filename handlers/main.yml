@@ -1,0 +1,12 @@
+---
+- name: restart service
+  service:
+    name: service
+    state: restarted
+  become: yes
+
+- name: restart service
+  service:
+    name: service
+    state: restarted
+  become: yes
